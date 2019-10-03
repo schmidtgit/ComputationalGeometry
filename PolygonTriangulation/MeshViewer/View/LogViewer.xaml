@@ -1,0 +1,91 @@
+﻿<Window x:Class="MeshViewer.View.LogViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:helix="http://helix-toolkit.org/wpf"
+        xmlns:local="clr-namespace:MeshViewer.View"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Background="LightGray"
+        mc:Ignorable="d"
+        Title="LogViewer" Height="350" Width="525">
+    <Grid Name="grid">
+        <!--Viewport to show the mesh-->
+        <helix:HelixViewport3D Name="Viewer" ModelUpDirection="0,1,0">
+        </helix:HelixViewport3D>
+
+        <!--Toggle buttons to change between modes-->
+        <RadioButton Name="cameraToggle" IsChecked="{Binding CameraMode, Mode=TwoWay}" Style="{StaticResource {x:Type ToggleButton}}"
+                Margin="10,0,0,10" Width="30" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Image Source="Icons/Camera.png"/>
+        </RadioButton>
+        <RadioButton Name="settingsToggle" IsChecked="{Binding SettingsMode, Mode=TwoWay}" Style="{StaticResource {x:Type ToggleButton}}"  
+                Margin="45,0,0,10" Width="30" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Image Source="Icons/Settings.png"/>
+        </RadioButton>
+        <RadioButton Name="colorToggle" IsChecked="{Binding ColorMode, Mode=TwoWay}" Style="{StaticResource {x:Type ToggleButton}}"
+                Margin="80,0,0,10" Width="30" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Image Source="Icons/Brush.png"/>
+        </RadioButton>
+        <RadioButton Name="logToggle" IsChecked="{Binding LogMode, Mode=TwoWay}" Style="{StaticResource {x:Type ToggleButton}}"
+                Margin="115,0,0,10" Width="30" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Image Source="Icons/Cube.png"/>
+        </RadioButton>
+
+
+        <!--Buttons for camera control-->
+        <Button Name="cameraChange" Command="{Binding CameraControl}" Content="Change Camera" Margin="10,0,0,50" Width="100" Height="25" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Button Name="cameraReset" Command="{Binding CameraResetControl}" Content="Reset Camera" Margin="10,0,0,85" Width="100" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+        <!--Buttons for model settings-->
+        <ToggleButton Name="faceToggle" Command="{Binding FacesControl}" Content="Toggle Faces" Margin="10,0,0,50" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left" IsChecked="True"/>
+        <ToggleButton Name="vertToggle" Command="{Binding VertControl}" Content="Toggle Vertices" Margin="10,0,0,85" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <ToggleButton Name="meshToggle" Command="{Binding FullMeshControl}" Content="Show Full Mesh" Margin="10,0,0,120" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <ToggleButton Name="wireframeToggle" Command="{Binding WireframeControl}" Content="Toggle Wireframe" Margin="10,0,0,155" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <ToggleButton Name="smoothToggle" Command="{Binding SmoothControl}" Content="Toggle Smoothing" Margin="10,0,0,190" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left" IsChecked="True"/>
+        <Button Name="export" Command="{Binding ExportControl}" Content="Export Model" Margin="10,0,0,225" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+
+        <!--Button for log control-->
+        <Button Name="logIncrement" Command="{Binding IncrementControl}" Content="Increment" Margin="10,0,0,50" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Button Name="logDecrement" Command="{Binding DecrementControl}" Content="Decrement" Margin="10,0,0,85" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Button Name="logRun" Command="{Binding AutoRunControl}" Content="Run Algorithm" Margin="10,0,0,120" Width="100" Height="25" 
+                Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+        <TextBox Name="seconds" Text="" Height="20" Width="50" Margin="10,0,0,155"  
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Center" VerticalAlignment="Bottom"/>
+        <TextBlock Name="secText" Text="seconds" VerticalAlignment="Bottom" Height="20" Width="50" Margin="60,0,0,155"  
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Center"/>
+        <TextBlock Name="logMaxvalue" Text="{Binding MaxValue}" VerticalAlignment="Bottom" Height="20" Width="100" Margin="10,0,0,180"  
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Center"/>
+        <TextBox Name="logCurrent" Text="{Binding StepValue, Mode=TwoWay}" Height="20" Width="100" Margin="10,0,0,205"  
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+        <!--Colorpickers-->
+        <TextBlock Name="colTxtFace" Height="20" Width="50" Margin="10,0,0,50" Text="Faces:" 
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom"/>
+        <xctk:ColorPicker Name="faceColor" SelectedColor="{Binding FaceColor, Mode=TwoWay}" Height="25" Width="40" ShowAdvancedButton="True"
+                Visibility="Hidden" Margin="70,0,0,50" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBlock Name="colTxtVert" Height="20" Width="50" Margin="10,0,0,85" Text="Vertices:" 
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom"/>
+        <xctk:ColorPicker Name="vertColor" SelectedColor="{Binding VertColor, Mode=TwoWay}" Height="25" Width="40" ShowAdvancedButton="True"
+                Visibility="Hidden" Margin="70,0,0,85" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBlock Name="colTxtWire" Height="20" Width="60" Margin="10,0,0,120" Text="Wireframe:" 
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom"/>
+        <xctk:ColorPicker Name="wireColor" SelectedColor="{Binding WireColor, Mode=TwoWay}" Height="25" Width="40" ShowAdvancedButton="True"
+                Visibility="Hidden" Margin="70,0,0,120" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBlock Name="colTxtCube" Height="20" Width="60" Margin="10,0,0,155" Text="Logcube:" 
+                Visibility="Hidden" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom"/>
+        <xctk:ColorPicker Name="cubeColor" SelectedColor="{Binding CubeColor, Mode=TwoWay}" Height="25" Width="40" ShowAdvancedButton="True"
+                Visibility="Hidden" Margin="70,0,0,155" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>

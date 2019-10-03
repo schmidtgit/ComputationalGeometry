@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0AA8069A-049E-43D2-B30F-77F6A160AB6E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Program</RootNamespace>
+    <AssemblyName>Program</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Figures.cs" />
+    <Compile Include="Launchers\BaseLauncher.cs" />
+    <Compile Include="Launchers\CompareAllLauncher.cs" />
+    <Compile Include="Launchers\DefaultLauncher.cs" />
+    <Compile Include="Launchers\DemoLauncher.cs" />
+    <Compile Include="Launchers\ExpressionLauncher.cs" />
+    <Compile Include="Launchers\FigureBuilder.cs" />
+    <Compile Include="Launchers\IProgramLauncher.cs" />
+    <Compile Include="Import\ObjParser.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuntimeImplicit\AtomCube.cs" />
+    <Compile Include="RuntimeImplicit\AtomCubeSliced.cs" />
+    <Compile Include="RuntimeImplicit\Box.cs" />
+    <Compile Include="RuntimeImplicit\Cone.cs" />
+    <Compile Include="RuntimeImplicit\Cube.cs" />
+    <Compile Include="RuntimeImplicit\Cylinder.cs" />
+    <Compile Include="RuntimeImplicit\GoursatsSurface.cs" />
+    <Compile Include="RuntimeImplicit\InfinitePlane.cs" />
+    <Compile Include="RuntimeImplicit\IRuntimeSDF.cs" />
+    <Compile Include="RuntimeImplicit\Sine.cs" />
+    <Compile Include="RuntimeImplicit\Sphere.cs" />
+    <Compile Include="RuntimeImplicit\Torus.cs" />
+    <Compile Include="RuntimeOperator\Intersection.cs" />
+    <Compile Include="RuntimeOperator\ISDFOperator.cs" />
+    <Compile Include="RuntimeOperator\PositionTransform.cs" />
+    <Compile Include="RuntimeOperator\Rotation.cs" />
+    <Compile Include="RuntimeOperator\Scaling.cs" />
+    <Compile Include="RuntimeOperator\Subtraction.cs" />
+    <Compile Include="RuntimeOperator\Union.cs" />
+    <Compile Include="StringExtension.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Exporters\IOhandler.csproj">
+      <Project>{784250CD-1085-4C61-96A0-B866AC963399}</Project>
+      <Name>IOhandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeshViewer\MeshViewer.csproj">
+      <Project>{4a1f694c-0bed-4c70-bf9a-f151dc32d014}</Project>
+      <Name>MeshViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PolygonTriangulation\PolygonTriangulation.csproj">
+      <Project>{B72B049F-A4F2-49C6-9899-1621880AE89B}</Project>
+      <Name>PolygonTriangulation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimprExpression\SimprExpression.csproj">
+      <Project>{5CDBC09C-86A2-4BDD-87FA-3909A52B9B99}</Project>
+      <Name>SimprExpression</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
