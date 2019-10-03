@@ -34,8 +34,10 @@ Additional:
 - Contains implementation of Perlin Noise
 
 ### Credit
-Developed by Christian Lebeda and Jens Schmidt
-Supervised by Troels Bjerre Lund
-Special thanks to Stan Melax, Paul Bourke and Mikola Lysenko - they have great online sources on this topic!
+Developed by [Christian Lebeda](https://github.com/ChristianLebeda) and [Jens Schmidt](https://www.linkedin.com/in/schmidthansen/)
 
-[More information available here]: https://adequatesource.com/triangulation
+Supervised by [Troels Bjerre Lund](http://www.itu.dk/~trbj/index.html)
+
+Special thanks to [Stan Melax](http://www.melax.com/), [Paul Bourke](http://paulbourke.net/) and [Mikola Lysenko](https://github.com/mikolalysenko) - they have great online sources on this topic!
+
+[More information available at AdequateSource.com](https://adequatesource.com/triangulation)
