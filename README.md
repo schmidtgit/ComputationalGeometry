@@ -1,3 +1,5 @@
+![triangulation](https://user-images.githubusercontent.com/16031858/143222779-0c382e45-d775-426c-bed2-881986c853fa.gif)
+
 ## Project Title:
 Computational Geometry - Polygon Triangulation of Implicit Defined Objects
 
